@@ -86,6 +86,7 @@ export function createContentGeneratorConfig(
   }
 
   if (authType === AuthType.USE_GEMINI && geminiApiKey) {
+    contentGeneratorConfig.model = DEFAULT_GEMINI_MODEL;
     contentGeneratorConfig.apiKey = geminiApiKey;
     contentGeneratorConfig.vertexai = false;
 
@@ -104,6 +105,7 @@ export function createContentGeneratorConfig(
 
   if (authType === AuthType.OPENAI && openaiApiKey) {
     contentGeneratorConfig.apiKey = openaiApiKey;
+    contentGeneratorConfig.model = process.env.OPENAI_MODEL || '';
     return contentGeneratorConfig;
   }
 
