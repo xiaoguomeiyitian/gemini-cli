@@ -37,6 +37,12 @@ export const validateAuthMethod = (authMethod: string): string | null => {
     }
     return null;
   }
+  if (authMethod === AuthType.OPENAI) {
+    if (!process.env.OPENAI_API_KEY) {
+      return "没有配置OpenAI api key";
+    }
+    return null
+  }
 
   return 'Invalid auth method selected.';
 };
